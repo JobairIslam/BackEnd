@@ -11,7 +11,7 @@ app.put("/",(req,res)=>{
     res.send("it a put request . it is HOME")
 })
 app.delete("/",(req,res)=>{
-    res.send("it a post request . it is HOME")
+    res.send("it a delete request . it is HOME")
 })
 
 module.exports=app;
