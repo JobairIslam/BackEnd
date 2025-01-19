@@ -5,15 +5,10 @@ app.get("/",(req,res)=>{
     res.send("it a get request . it is HOME")
     res.end()
 })
-app.get("/register",(req,res)=>{
-    res.send("it a get request . it is Register")
-    res.end()
-})
-app.get("/login",(req,res)=>{
-    res.send("it a get request . it is LogIn")
-    res.end()
-})
 
+app.use((req,res)=>{
+    res.send("<h1>404</h1>")
+})
 //post request
 app.post("/",(req,res)=>{
     res.send("it a post request . it is HOME")
