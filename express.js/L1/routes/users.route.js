@@ -10,3 +10,5 @@ router.get("/login",(req,res)=>{
     res.send("it a get request . it is LogIn")
     res.end()
 })
+
+module.exports=router

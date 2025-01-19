@@ -1,5 +1,10 @@
 const express = require('express');
 const app=express()
+const userRouter=require("./routes/users.route")
+
+app.use("/api/user",userRouter)
+
+
 //get request
 app.get("/",(req,res)=>{
     res.send("it a get request . it is HOME")
