@@ -10,7 +10,19 @@ app.get("/",(req,res)=>{
     res.send("it a get request . it is HOME")
     res.end()
 })
-//response
+
+
+
+
+
+
+
+
+
+
+
+
+//http response
 app.use("/jubair", (req, res) => {
     res.status(200).json({
         name: "jubair islam",
@@ -43,7 +55,25 @@ app.use("/jubair5", (req, res) => {
     res.append("id","119600")
     res.send("hello");
 });
-//response
+//http response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.use((req,res)=>{
     res.send("<h1>404</h1>")
 })
