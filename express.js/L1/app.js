@@ -21,12 +21,27 @@ app.use("/jubair", (req, res) => {
 });
 //html file as response
 app.use("/jubair2", (req, res) => {
-    res.status(200).json({
-        name: "jubair islam",
-        age: "23",
-        statusCode:200
-    })
-    // res.redirect("/api/user/login")
+    res.statusCode=202;
+    res.sendFile(__dirname+"/views/jubair.html")
+});
+app.use("/jubair3", (req, res) => {
+    res.statusCode=200;
+    res.sendFile(__dirname+"/views/asif.html")
+});
+//cookies as response
+app.use("/jubair4", (req, res) => {
+    res.statusCode = 200;
+    // Set cookies first
+    res.cookie("name", "jubair");
+    res.cookie("age", "23");
+    // Then send the response
+    res.send("hi");
+});
+//header as response
+app.use("/jubair5", (req, res) => {
+    res.statusCode = 200;
+    res.append("id","119600")
+    res.send("hello");
 });
 //response
 app.use((req,res)=>{
