@@ -24,13 +24,19 @@ app.get("/jubair/:id/:age",(req,res)=>{
 
 
 //request with header parameter
-app.get("/asif",(req,res)=>{
-    const {id,age}=req.header;
+app.get("/asif", (req, res) => {
+    // Method 1: Using headers
+    const id = req.header('id');
+    const age = req.header('age');
+    
+    // OR Method 2: Using query parameters
+    // const {id, age} = req.query;
+    
     res.send(`
         <h1>Student id is: ${id}</h1>
         <h1>Student name is: ${age}</h1>
     `);
-})
+});
 //request with header parameter
 
 app.listen(port,()=>{
