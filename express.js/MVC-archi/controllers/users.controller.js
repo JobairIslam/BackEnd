@@ -1,5 +1,7 @@
+const path=require("path")
+const users=require("../models/users.model")
 exports.getUsers= (req, res) => {
-    res.send(htmlForm);
+    res.sendFile(path.join(__dirname+"/../views/index.html"));
 }
 
 exports.postUsers= (req, res) => {
