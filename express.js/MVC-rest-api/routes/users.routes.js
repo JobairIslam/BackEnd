@@ -1,11 +1,11 @@
 const express=require("express")
+const { getallusers, createUser } = require("../controllers/users.controllers")
 const router =express.Router()
-const users=require("./models/users.model")
 
 
-router.get("/",(req,res)=>{
-    res.status(200).json({users})
-})
+
+router.get("/",getallusers)
+router.post("/",createUser)
 
 
 module.exports=router
