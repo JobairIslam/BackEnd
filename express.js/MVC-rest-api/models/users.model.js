@@ -5,17 +5,17 @@ const users=[
     {
         id: uuidv4(),
         username: "jubair islam",
-        emai: "kkjnf@gmail.com"
+        email: "kkjnf@gmail.com"
     },
     {
         id: uuidv4(),
         username: "jubair islam",
-        emai: "kkjnf@gmail.com"
+        email: "kkjnf@gmail.com"
     },
     {
         id: uuidv4(),
         username: "jubair islam",
-        emai: "kkjnf@gmail.com"
+        email: "kkjnf@gmail.com"
     }
 ];
 
