@@ -1,14 +1,21 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const morgan=require("morgan") 
-app.use(morgan("dev"))
+const chalk=require("chalk")
 
 
-app.get('/', (req, res) => {
-  res.send("home route");
+// Register route
+app.get('/register', (req, res) => {
+    res.send('Register page');
 });
-app.get('/test', (req, res) => {
-  res.status(200).send("test route");
+
+// Handle 404 errors
+app.use((req, res) => {
+    res.status(404).send('Page not found');
 });
-app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+
+// Start the server
+app.listen(port, () => {
+    console.log(chalk.blue('Hello world!'));
+    console.log(chalk.blue.bgRed.bold(`Server is listening on http://localhost:${port}`));
+});
