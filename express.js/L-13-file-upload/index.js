@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT ||3000;
 const multer=require("multer")
+//connecting to DB 
+const mongoose=require("mongoose")
 
 
 //file updoad
