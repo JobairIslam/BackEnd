@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const chalk = require('chalk');
 
-// Middleware to parse JSON
+
 app.use(express.json());
 
 // Home route
