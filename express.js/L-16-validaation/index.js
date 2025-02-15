@@ -12,7 +12,17 @@ app.get('/', (req, res) => {
 });
 
 //name,email,pass,dob
-
+app.post("/api/register",(req,res)=>{
+    try {
+        return res.status(201).json({
+            message:"user was created"
+        })
+    } catch (error) {
+        return res.json({
+            message:error.message
+        })
+    }
+})
 // Handle 404 errors (must be after all other routes)
 app.use((req, res) => {
     res.status(404).send('Page not found');
