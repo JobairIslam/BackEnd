@@ -17,6 +17,9 @@ app.get("/test",(req,res)=>{
 app.get("/logIn",(req,res)=>{
     res.send("log in route")
 })
+app.get("/logout",(req,res)=>{
+    res.send("log out route")
+})
 
 //name,email,pass,dob
 app.post("/api/register",(req,res)=>{
