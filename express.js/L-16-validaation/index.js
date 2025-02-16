@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     res.send('Home');
 });
 
+app.get("/test",(req,res)=>{
+    res.send("test route")
+})
+
 //name,email,pass,dob
 app.post("/api/register",(req,res)=>{
     try {
