@@ -14,6 +14,9 @@ app.get('/', (req, res) => {
 app.get("/test",(req,res)=>{
     res.send("test route")
 })
+app.get("/logIn",(req,res)=>{
+    res.send("log in route")
+})
 
 //name,email,pass,dob
 app.post("/api/register",(req,res)=>{
