@@ -1,45 +1,37 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
-const chalk = require('chalk');
-
+const port = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+const {body}=require("express-validator")
 
-// Home route
-app.get('/', (req, res) => {
-    res.send('Home');
+app.get("/test", (req, res) => {
+    res.send("test route");
 });
 
-app.get("/test",(req,res)=>{
-    res.send("test route")
-})
-app.get("/logIn",(req,res)=>{
-    res.send("log in route")
-})
-app.get("/logout",(req,res)=>{
-    res.send("log out route")
-})
-
-//name,email,pass,dob
-app.post("/api/register",(req,res)=>{
+// Name, email, pass, dob
+// /api/register
+app.post("/api/register",
+   //input validation
+   body("name").trim().notEmpty()
+    ,(req, res) => {
     try {
-        return res.status(201).json({
-            message:"user was created"
-        })
+        const { name, email, pass, dob } = req.body;
+        const newUser={
+            name,email,pass,dob
+        }
+        res.status(201).json({
+            message: "User was created",
+            newUser
+        });
     } catch (error) {
-        return res.json({
-            message:error.message
-        })
+        res.status(500).json({
+            message: error.message
+        });
     }
-})
-// Handle 404 errors (must be after all other routes)
-app.use((req, res) => {
-    res.status(404).send('Page not found');
 });
 
-// Start the server
 app.listen(port, () => {
-    console.log(chalk.blue('Hello world!'));
-    console.log(chalk.blue.bgRed.bold(`Server is listening on http://localhost:${port}`));
+    console.log(`Server is running at http://localhost:${port}`);
 });
