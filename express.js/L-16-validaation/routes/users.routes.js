@@ -11,7 +11,7 @@ userRoutes.post("/register",userValidator,runValidation,controllValidation);
 
 
 // Login Route with Validation
-userRoutes.post("/login",userLoginValidator, runlogin,controllLogin);
+userRoutes.post("/login",userLoginValidator, runlogin,controllLogin); 
 
 
 
