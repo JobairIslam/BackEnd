@@ -23,7 +23,10 @@ app.post("/api/register", (req, res) => {
             email: req.body.email,
             age: req.body.age
         }
-        return res.send("user is created");
+        return res.status(201).json({
+            message:"created",
+            user
+        })
     } catch (error) {
         return res.send({ message: error.message });
     }
