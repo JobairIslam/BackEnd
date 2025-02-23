@@ -1,33 +1,17 @@
 const express = require('express');
 const joi = require('joi');
+const userRouter = require('./routes/user');
 const app = express();
 const port = 3008;
 
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 
-
-app.get("/test",(req,res)=>{
-    res.json({message:"testing"})
-})
-
-//api/register
-
-app.post("/api/register", (req, res) => {
-    try {
-        console.log("Received data:", req.body);
-        const user={
-            name: req.body.name,
-            email: req.body.email,
-            age: req.body.age
-        }
-        return res.status(201).json({
-            message:"created",
-            user
-        })
-    } catch (error) {
-        return res.send({ message: error.message });
-    }
+app.get("/test", (req, res) => {
+    res.json({ message: "testing" });
 });
+
+// API: /api/register
+app.use("/api",userRouter)
