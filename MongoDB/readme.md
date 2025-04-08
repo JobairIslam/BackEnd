@@ -1,3 +1,6 @@
+DATABASE->COLLECTION(table)->DOCUMENTS(record/row)
+
+
 🟢Start Mongo Shell & Connect
 mongosh                // Start the MongoDB shell
 
