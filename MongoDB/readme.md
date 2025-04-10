@@ -68,3 +68,7 @@ db.products.find({ price: { $in: [100, 200, 300] } })
 // $nin (Does not match any value in an array)
 db.products.find({ price: { $nin: [100, 200, 300] } })
 
+
+*Logical Query Operators*
+https://www.mongodb.com/docs/manual/reference/operator/query-logical/
+
