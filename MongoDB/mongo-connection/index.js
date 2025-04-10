@@ -106,12 +106,19 @@ app.get("/products", async (req, res) => {
 //GET: /products/logical -> Return all products
 app.get("/products/logical",async(req,res)=>{
     try {
-        const products=await Product.find({
-            $or:[
-                {price:{$lt:1000}}, //price less than 1000
-                {inStock:true} //inStock is true
-            ]
-        });
+        const price=req.query.price ? Number(req.query.price) : null;
+        let products;
+        if(price){
+            products=await Product.find({
+                $nor:[
+                    {price:{$lt:price}}, //price less than 700
+                    {inStock:true} //inStock is true
+                ]
+            });
+        }else{
+            products=await Product.find();
+        }
+        
         if(!products){
             return res.status(404).send({message:"No products found"})
         }
