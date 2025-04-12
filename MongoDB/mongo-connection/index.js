@@ -66,21 +66,51 @@ app.post("/goods", async (req, res) => {
 
 
 // //GET: /products -> Return all products
-// app.get("/products",async(req,res)=>{
-//     try {
-//         const products=await Product.find();
-//         if(!products){  
-//             return res.status(404).send({message:"No products found"})
-//         }
-//         res.status(200).send(products);
-//     } catch (error) {
-//         res.status(500).send(error.message);
-//     }
-// })
+app.get("/products",async(req,res)=>{
+    try {
+        const products=await Product.find();
+        if(!products){  
+            return res.status(404).send({message:"No products found"})
+        }
+        res.status(200).send(products);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+
+//count the number of products      
+app.get("/products/count",async(req,res)=>{
+    try{
+        const products=await Product.find().countDocuments();
+        res.status(200).send(products);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+
+})
+
+//GET: /products/:id -> Return product by id
+app.get("/products/:id",async(req,res)=>{
+    try {
+        const product=await Product.findById(req.params.id).select({
+            name:1,
+            price:1,
+            inStock:1,
+            _id:0
+        });
+        if(!product){
+            return res.status(404).send({message:"Product not found"})
+        }
+        res.status(200).send(product);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}) 
 
 //use of Comparison Query Operators
 //GET: running a query to get the product by price <1000
-app.get("/products", async (req, res) => {
+app.get("/products/query", async (req, res) => {
     try {
         const price = req.query.price ? Number(req.query.price) : null;
         let products;
@@ -126,26 +156,10 @@ app.get("/products/logical",async(req,res)=>{
     } catch (error) {
         res.status(500).send(error.message);
     }   
-});     
+});   
 
 
-//GET: /products/:id -> Return product by id
-app.get("/products/:id",async(req,res)=>{
-    try {
-        const product=await Product.findById(req.params.id).select({
-            name:1,
-            price:1,
-            inStock:1,
-            _id:0
-        });
-        if(!product){
-            return res.status(404).send({message:"Product not found"})
-        }
-        res.status(200).send(product);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-})  
+ 
 
 app.listen(port,async()=>{
     console.log(`server is running at http://localhost:${port}`)
