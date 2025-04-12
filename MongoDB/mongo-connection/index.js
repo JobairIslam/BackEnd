@@ -90,6 +90,24 @@ app.get("/products/count",async(req,res)=>{
 
 })
 
+//sorting the products on the basis of price
+app.get("/products/sort", async(req,res)=>{
+    try{
+        const products = await Product.find().sort({ price: 1 }).select({
+            name: 1,
+            price: 1,
+            inStock: 1,
+            _id: 0
+        });
+        if(!products){
+            return res.status(404).send({message:"No products found"})
+        }
+        res.status(200).send(products);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
 //GET: /products/:id -> Return product by id
 app.get("/products/:id",async(req,res)=>{
     try {
