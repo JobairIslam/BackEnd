@@ -174,7 +174,20 @@ app.get("/products/logical",async(req,res)=>{
     } catch (error) {
         res.status(500).send(error.message);
     }   
-});   
+}); 
+
+//how to delete the data from the database
+app.delete("/products/:id",async(req,res)=>{
+    try{
+        const product=await Product.findByIdAndDelete(req.params.id);
+        if(!product){
+            return res.status(404).send("product not found");
+        }
+        res.status(200).send({message:"product deleted successfully",product});
+    }catch(error){
+        res.status(500).send(error.message);
+    }
+})
 
 
  
