@@ -180,16 +180,36 @@ app.get("/products/logical",async(req,res)=>{
 app.delete("/products/:id",async(req,res)=>{
     try{
         const product=await Product.findByIdAndDelete(req.params.id);
+        const remaingProducts=await Product.find();
         if(!product){
             return res.status(404).send("product not found");
         }
-        res.status(200).send({message:"product deleted successfully",product});
+        res.status(200).send({
+            message:"product deleted successfully",product,
+            remainingProducts:remaingProducts
+        });
+        
     }catch(error){
-        res.status(500).send(error.message);
+        res.status(500).send(error.message); 
     }
 })
 
-
+//how to update a document in the database
+app.put("/products/:id",async(req,res)=>{
+    try{
+        const product=await Product.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        if(!product){
+            return res.status(404).send("product not found");
+        }
+        const products=await Product.find();     
+        res.status(200).send({
+            message:"product updated successfully",product,
+            products:products
+        })          
+    }catch(error){
+        res.status(500).send(error.message);  
+    }
+})
  
 
 app.listen(port,async()=>{
