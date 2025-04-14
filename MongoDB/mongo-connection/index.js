@@ -9,16 +9,61 @@ const port=3002;
 const productSchema= new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true,"name is required"],
+        minlength:[3,"name must be at least 3 characters long"],
+        maxlength:[30,"name must be less than 30 characters long"],
+        trim:true,   
+        validate:{
+            //alphabet,number,special character
+            validator:function(v){
+                return /^[a-zA-Z0-9]+$/.test(v);
+            },
+            message:"name must contain only alphabets and numbers",
+        }   
     },
     price: {
         type: Number,
-        required: true,
+        required: [true,"price is required"],
+        min:[0,"price must be at least 0"],
+        max:[10000,"price must be less than 1000"],
+        validate:{
+            validator:Number.isInteger,
+            message:"price must be an integer",
+        },      
+        trim:true, 
     },
     inStock: {
         type: Boolean,
-        required: true,
+        required: [true,"inStock is required"],
     },
+    createdAt:{
+        type:Date,
+        default:Date.now,
+    },
+    // email:{
+    //     type:String,
+    //     required:[true,"email is required"],
+    //     validate:{
+    //         validator:function(v){
+    //             return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v);
+    //         },
+    //         message:"invalid email address",
+    //     },
+    //     trim:true, 
+    //     unique:true,    
+    //     lowercase:true,
+    //     match:[/^\S+@\S+\.\S+$/,"invalid email address"],   
+    //     index:true,
+    //     sparse:true,
+    //     select:false,
+    //     alias:"email",
+    //     aliasField:"email",
+    //     aliasQuery:"email",
+    //     aliasProjection:"email",
+    //     aliasSort:"email",
+    //     aliasAggregate:"email",
+    //     aliasPopulate:"email",
+    // }
 })
 //create product model
 const Product= mongoose.model("Product",productSchema);
