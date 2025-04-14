@@ -10,16 +10,27 @@ const productSchema= new mongoose.Schema({
     name: {
         type: String,
         required: [true,"name is required"],
-        minlength:[3,"name must be at least 3 characters long"],
-        maxlength:[30,"name must be less than 30 characters long"],
-        trim:true,   
+        // minlength:[3,"name must be at least 3 characters long"],
+        // maxlength:[30,"name must be less than 30 characters long"],
+         trim:true,   
+        //custom validation
         validate:{
-            //alphabet,number,special character
-            validator:function(v){
-                return /^[a-zA-Z0-9]+$/.test(v);
+            validator: function(v) {
+                return v.length > 3 && v.length < 30;
             },
-            message:"name must contain only alphabets and numbers",
-        }   
+            message: (props) => `${props.value} must be between 3 and 30 characters long`,
+        }  
+    },
+    phoneNumber:{
+        type:String,
+        required:[true,"phone number is required"],
+        validate:{
+            validator:function(v){
+                //use 0-9 and + and - and space and it will be 15 digits maximum               
+                return /^[0-9+-\s]{17}$/.test(v);
+            },
+            message:"invalid phone number", 
+        }
     },
     price: {
         type: Number,
