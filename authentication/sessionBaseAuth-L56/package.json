@@ -1,0 +1,20 @@
+{
+  "name": "sessionbaseauth-l56",
+  "version": "1.0.0",
+  "description": "passport framework ----> \r              *passport main library->session manage\r                      ##express session--> session genetare\r              *strategy -> user authentication\r                     #local strategy - passport local\r                     #passport google",
+  "main": "index.js",
+  "scripts": {
+    "start" : "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.1",
+    "nodemon": "^3.1.10"
+  }
+}
