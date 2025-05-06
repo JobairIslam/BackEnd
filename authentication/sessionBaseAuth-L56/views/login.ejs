@@ -1,0 +1,12 @@
+<%-include("layout/header")%>
+
+    <h1>wellcome to the login page</h1>
+    <form action="/login" method="POST" style="max-width: 350px; margin: 30px auto; padding: 24px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <label for="username" style="display: block; margin-bottom: 6px; font-weight: bold;">Username:</label>
+        <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #bbb; border-radius: 4px;">
+        <label for="password" style="display: block; margin-bottom: 6px; font-weight: bold;">Password:</label>
+        <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #bbb; border-radius: 4px;">
+        <button type="submit" style="width: 100%; padding: 10px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;">Login</button>
+    </form>
+
+<%-include("layout/footer")%>
