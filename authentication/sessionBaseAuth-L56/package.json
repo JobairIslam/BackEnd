@@ -4,17 +4,22 @@
   "description": "passport framework ----> \r              *passport main library->session manage\r                      ##express session--> session genetare\r              *strategy -> user authentication\r                     #local strategy - passport local\r                     #passport google",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "mongoose": "^8.14.1",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   }
 }
