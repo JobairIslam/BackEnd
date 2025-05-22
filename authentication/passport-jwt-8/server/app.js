@@ -23,8 +23,8 @@ app.post("/login",(req,res)=>{
 })
 
 //profile route
-app.post("/login",(req,res)=>{
-    res.send("login route")
+app.get("/profile",(req,res)=>{
+    res.send("hi jobair islam asif")
 })
 
 
