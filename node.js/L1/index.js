@@ -1,19 +1,9 @@
-const getName=()=>{
-    return "juair islam asif";
-}
+const s1 = require('./app.js');
 
-const getCity = () =>{
-    return "khulna";
-}
-let cgpa=3.47;
+// const {getName,getAge,cgpa} = require('./app.js');
 
-getName();
+// console.log(getName())
 
-// exports.name = getName;
-// exports.city = getCity;
-// exports.result=cgpa;
-module.exports={
-    getName,
-    getCity,
-    cgpa
-}
+console.log(s1.getName())
+console.log(s1.getAge())
+console.log(s1.cgpa)

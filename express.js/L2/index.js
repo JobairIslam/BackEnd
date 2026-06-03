@@ -1,44 +1,37 @@
-const express=require('express')
-const app=express()
-const port=3001
-//request with query parameter
+const express = require("express")
+const bodyParser = require('body-parser')
+const app = express();
+const port = 3000;
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
 app.get("/",(req,res)=>{
-    const {id, name} = req.query;
-    res.send(`
-        <h1>Student id is: ${id}</h1>
-        <h1>Student name is: ${name}</h1>
-    `);
+    const id = req.query.id;
+    res.send(`Student id ${id}`)
 })
-//request with query parameter
 
-
-//request with route parameter
-app.get("/jubair/:id/:age",(req,res)=>{
-    const {id,age}=req.params;
-    res.send(`
-        <h1>Student id is: ${id}</h1>
-        <h1>Student name is: ${age}</h1>
-    `);
+app.get("/user",(req,res)=>{
+    res.sendFile(__dirname + "/index.html")
 })
-//request with route parameter
+
+app.post("/user",(req,res)=>{
+    // const name = req.body.name;
+    // const age = req.body.age;
+    // res.send(`welcome ${name}.`)
+    const name = req.body.name;
+    const age = req.body.age;
+    res.send(`welcome ${name}. You are ${age} years old`)
+})
 
 
-//request with header parameter
-app.get("/asif", (req, res) => {
-    // Method 1: Using headers
-    const id = req.header('id');
-    const age = req.header('age');
-    
-    // OR Method 2: Using query parameters
-    // const {id, age} = req.query;
-    
-    res.send(`
-        <h1>Student id is: ${id}</h1>
-        <h1>Student name is: ${age}</h1>
-    `);
-});
-//request with header parameter
 
-app.listen(port,()=>{
+
+
+app.listen(port, ()=>{
     console.log(`server is running at http://localhost:${port}`)
 })
+

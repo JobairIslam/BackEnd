@@ -1,18 +1,14 @@
-//os-operating system , path
-const os=require("os")
-// console.log(os.userInfo())
-console.log(os.homedir())
-console.log(os.hostname())
-console.log(os.totalmem())
-console.log(os.freemem())
+const http = require ("http");
+const port = 3000;
+const hostname = '127.0.0.1';
 
-console.log(__dirname)
-console.log(__filename)
+const myServer = http.createServer((req,res)=>{
+    // res.end("<h1>hello</h1>");
+    res.writeHead(202,{'Content-Type':'text/html'})
+    res.write("<h1>hello</h1>");
+    res.end();
+});
 
-const path=require("path")
-// console.log(path)
-console.log(path.extname("index.html"))
-const joinName=path.join(__dirname+"/views")
-console.log(joinName)
-
- 
+myServer.listen(port,hostname,()=>{
+    console.log(`server is running at http://${hostname}:${port}`) 
+}) 

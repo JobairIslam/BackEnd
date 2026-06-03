@@ -1,22 +1,19 @@
-const express=require("express")
-const app=express()
-const port=3000;
-const bodyParser=require("body-parser")
+const express = require('express');
+const app = express();
+const port = 3000;
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.get('/products/:id',(req,res)=>{
+    res.send(`product id is ${req.params.id}`)
+});
+app.get('/',(req,res)=>{
+    res.send("hello world")
+});
 
-// parse application/json
-app.use(bodyParser.json())
+//404 route for wrong url
+app.get('/{*any}', (req, res) => {
+    res.status(404).send('404 not found');
+  });
 
-app.get("/register",(req,res)=>{
-    res.sendFile(__dirname+"/index.html")
-})
-
-app.post("/register",(req,res)=>{
-    const fullname=req.body.fullname;
-    const age=req.body.age;
-    res.send(`hi ${fullname}. your age is ${age}`)
-})
-
-app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+app.listen(port,()=>{
+    console.log(`server is running at http://localhost:${port}`)
+});
