@@ -1,1 +1,3 @@
-vdo 20(area claculate), 21,
+vdo 20(area claculate), 21,27,28
+
+watch vdo after BD vdos --> 28, 30
