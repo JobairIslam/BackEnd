@@ -4,6 +4,8 @@ require('dotenv').config();
 const port = process.env.PORT;
 const morgan = require('morgan')
 app.use(morgan("dev"))
+const chalk = require('chalk').default;
+
 
 app.get('/',(req,res)=>{
     res.send("hello world")
@@ -13,5 +15,5 @@ app.get('/sumu',(req,res)=>{
 });
 
 app.listen(port,()=>{
-    console.log(`server is running at http://localhost:${port}`)
+    console.log(chalk.bgRed.bold(`server is running at http://localhost:${port}`))
 });
